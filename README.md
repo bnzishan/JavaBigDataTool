@@ -24,4 +24,10 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 
 ## 二.功能介绍
 1. 采用Maven管理第三方库 
-2. Kafka生产消费示例
+2. Kafka生产消费代码示例
+3. Hbase代码示例
+
+```
+    create_namespace 'd'
+    create 'd:v', 'c',{SPLITALGO => 'HexStringSplit',NUMREGIONS => 20}
+```
