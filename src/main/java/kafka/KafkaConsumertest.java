@@ -6,6 +6,8 @@ import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.Properties;
 public class KafkaConsumertest {
 
     private final ConsumerConnector consumer;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private KafkaConsumertest() {
         Properties props = new Properties();
@@ -65,7 +68,7 @@ public class KafkaConsumertest {
         KafkaStream<String, String> stream = consumerMap.get(KafkaProducetest.TOPIC).get(0);
         ConsumerIterator<String, String> it = stream.iterator();
         while (it.hasNext())
-            System.out.println(it.next().topic()+":"+it.next().partition()+":"+it.next().offset()+":"+it.next().key()+":"+it.next().message());
+            logger.info(it.next().topic()+":"+it.next().partition()+":"+it.next().offset()+":"+it.next().key()+":"+it.next().message());
     }
 
     public static void main(String[] args) {

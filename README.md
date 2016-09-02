@@ -21,3 +21,7 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
     org.slf4j:log4j-over-slf4j:1.6.6　//旧式日志API的第三方类库或旧代码的日志调用转到slfj
     
 参考：http://www.slf4j.org/legacy.html
+
+## 二.功能介绍
+1. 采用Maven管理第三方库 
+2. Kafka生产消费示例

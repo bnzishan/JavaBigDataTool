@@ -3,6 +3,8 @@ package kafka;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 import java.util.Random;
@@ -15,6 +17,7 @@ import java.util.Random;
  */
 public class KafkaProducetest {
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     private final Producer<String, String> producer;
     public final static String TOPIC = "clicki_track_topic";
 
@@ -43,23 +46,21 @@ public class KafkaProducetest {
     void produce() {
         int messageNo = 1000;
         final int COUNT = 2003;
-        Random ra= new Random();
+        Random ra = new Random();
         while (messageNo < COUNT) {
             String key = String.valueOf(messageNo);
-            String data = "hello kafka message " + key;
-                String[] table=new String[]{"info_mz_campaign_spot",
-                    "info_site_user",
-                    "info_url", "info_title",
-                    "info_app", "info_gg_campaign", "info_gg_source", "info_gg_medium", "info_gg_content",
-                    "info_gg_keyword", "info_mz_keyword", "info_version", "info_custom", "info_value",
-                    "info_action","info_error","jj"};
-            int i=ra.nextInt(table.length);
-            String data1="{\"c\":"+messageNo+",\"i\":"+messageNo+",\"n\":\"http://www.abbo.cn/clicki.html\",\"s\":"+messageNo+",\"sid\":0,\"t\":\""+table[i]+"\",\"tid\":"+messageNo+",\"unix\":0,\"viewId\":0}";
+            String[] table = new String[]{"infospot",
+                    "info_site_user"};
+            int i = ra.nextInt(table.length);
+
+            String data1 = "{\"c\":" + messageNo + ",\"i\":" + messageNo + ",\"n\":\"http:/icki.html\",\"s\":" + messageNo + ",\"sid\":0,\"t\":\"" + table[i] + "\",\"tid\":" + messageNo + ",\"unix\":0,\"viewId\":0}";
+
             // 发送消息
-            producer.send(new KeyedMessage<String, String>(TOPIC,data1));
+            producer.send(new KeyedMessage<String, String>(TOPIC, data1));
+
             // 消息类型key:value
-//            producer.send(new KeyedMessage<String, String>(TOPIC, key, data));
-            System.out.println(messageNo+".."+data1);
+//            producer.send(new KeyedMessage<String, String>(TOPIC, key, data1));
+            logger.info(messageNo + ".." + data1);
             messageNo++;
         }
 //        producer.close();//必须关闭
