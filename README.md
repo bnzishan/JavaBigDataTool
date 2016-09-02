@@ -1,6 +1,6 @@
 # Java大数据工具包
 
-##　日志记录
+##　一.日志记录
 SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是一个抽象层（ abstraction layer），
 它允许你在后台使用任意一个日志类库。如果是在编写供内外部都可以使用的API或者通用类库，
 
