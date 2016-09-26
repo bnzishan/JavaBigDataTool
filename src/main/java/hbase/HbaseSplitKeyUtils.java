@@ -12,6 +12,9 @@ import java.util.TreeSet;
  * Created by hunterhug on 16-9-1.
  * Hbase Region分区工具
  * http://www.cnblogs.com/bdifn/p/3801737.html
+ * 可弃用，直接使用
+ *     create_namespace 'namespace'
+ *     create 'namespace:visitor', 'col',{SPLITALGO => 'HexStringSplit',NUMREGIONS => 20}
  */
 public class HbaseSplitKeyUtils {
 

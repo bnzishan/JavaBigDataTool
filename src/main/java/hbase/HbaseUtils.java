@@ -318,9 +318,9 @@ public class HbaseUtils {
         config.set("hbase.zookeeper.property.clientPort", "2181");
         config.set("hbase.zookeeper.quorum", "192.168.11.73");
         config.set("hbase.master", "192.168.11.73:60000");
-        String namespace="d";
-        String tablename = "v";
-        String[] column_family = {"c"};
+        String namespace="namespace";
+        String tablename = "visitor";
+        String[] column_family = {"col"};
         try {
 
             //列出表信息

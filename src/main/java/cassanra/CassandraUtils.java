@@ -49,7 +49,7 @@ public class CassandraUtils {
 
     public static void main(String[] a){
         DbConfig config = new DbConfig();
-        config.dataBase="clic";
+        config.dataBase="click-v";
         config.host="192.168.11.74";
         CassandraUtils c=new CassandraUtils(config);
         c.getConnecttion();
