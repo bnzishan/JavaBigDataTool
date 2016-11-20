@@ -233,4 +233,10 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 见代码
 ```
 
-安装见[http://www.lenggirl.com](http://www.lenggirl.com)
+5. 基本爬虫包
+
+```
+待写
+```
+
+安装软件见[http://www.lenggirl.com](http://www.lenggirl.com)
