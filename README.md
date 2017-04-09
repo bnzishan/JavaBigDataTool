@@ -18,12 +18,17 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 
 大家知道Java的日志记录是稍微有点乱的，于是采用logbcak进行日志记录
 
+
+```
     slf4j-api  //接口，以下两种选择均实现该接口
     
  /*
     第一种用法：
-    log4j:这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
-    slf4j-log4j12:链接slf4j-api和log4j中间的适配器。它实现了slf4j-api中StaticLoggerBinder接口，从而使得在编译时绑定的是slf4j-log4j12的getSingleton()方法
+    log4j
+        这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
+    slf4j-log4j12:
+        链接slf4j-api和log4j中间的适配器。
+        它实现了slf4j-api中StaticLoggerBinder接口，从而使得在编译时绑定的是slf4j-log4j12的getSingleton()方法
  */
     log4j　//排除掉，使用logback-classic
     slf4j-log4j12　//排除掉，使用logback-classic
@@ -32,12 +37,13 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
  /*
     第二种用法：
     引入下面三个!
-    
+    替代上面第一种用法
  */
     logback-classic
     logback-core
     
     log4j-over-slf4j　//旧式日志API的第三方类库或旧代码的日志调用转到slfj
+```
 
 最后使用的Maven配置是：
 
