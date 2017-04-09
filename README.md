@@ -11,20 +11,29 @@ mongodb，session记录/经常访问的数据等热缓存到redis数据库。
 
 >方便处理，我也实例了一个日志记录框架，请看下面。
 
-##　一.日志记录
+## 一.日志记录
+
 SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是一个抽象层（abstraction layer），
 它允许你在后台使用任意一个日志类库。如果是在编写供内外部都可以使用的API或者通用类库，
 
 大家知道Java的日志记录是稍微有点乱的，于是采用logbcak进行日志记录
 
-    slf4j-api  //接口
+    slf4j-api  //接口，以下两种选择均实现该接口
     
+ /*
+    第一种用法：
+    log4j:这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
+    slf4j-log4j12:链接slf4j-api和log4j中间的适配器。它实现了slf4j-api中StaticLoggerBinder接口，从而使得在编译时绑定的是slf4j-log4j12的getSingleton()方法
+ */
     log4j　//排除掉，使用logback-classic
     slf4j-log4j12　//排除掉，使用logback-classic
     
-    //slf4j-log4j12:链接slf4j-api和log4j中间的适配器。它实现了slf4j-api中StaticLoggerBinder接口，从而使得在编译时绑定的是slf4j-log4j12的getSingleton()方法
-    //log4j:这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
+ 
+ /*
+    第二种用法：
+    引入下面三个!
     
+ */
     logback-classic
     logback-core
     
@@ -57,9 +66,10 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
             <scope>compile</scope>
         </dependency>
     
-参考：http://www.slf4j.org/legacy.html
+参考：http://www.slf4j.org/legacy.html  
 
 ## 二.具体介绍
+
 1. 采用Maven管理第三方库，请看pom.xml文件
 
 ```
@@ -216,7 +226,7 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 2. Kafka生产消费代码示例
 
 ```
-见代码
+生产消费两个示例请见代码，已经有详细注释
 ```
 
 3. Hbase代码示例
@@ -225,18 +235,22 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 请先建表，包括命名空间，表名，列族，分区算法，分区数
     create_namespace 'namespace'
     create 'namespace:visitor', 'col',{SPLITALGO => 'HexStringSplit',NUMREGIONS => 20}
+   
+代码已有详细注释
 ```
 
 4. Cassandra代码示例
 
 ```
-见代码
+代码已有详细注释
 ```
 
 5. 基本爬虫包
 
-```
-待写
-```
+Java不适合写爬虫，比较笨重，建议数据流用Java处理，如把爬到的数据打到KAFKA，让Java接力，Golang目前比较擅长高并发写爬虫，见https://www.github.com/hunterhug/GoSpider
+
+6. 网站开发
+
+Java并不适合快速网站开发，但是可以使用Spring，目前Spring Boot已经简化了开发，较简单，此不引入。MYSQL ORM不建议使用Hibernate或MyBatis,由于转换SQL语句相对耗时，且由于目前有其他数据库可替代，所以建议原生，带上连接池即可。
 
 安装软件见[http://www.lenggirl.com](http://www.lenggirl.com)
