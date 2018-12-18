@@ -6,7 +6,7 @@
 storm任务进行连续流处理，处理结果可以再次扔回kafka，也可存入cassandra或者hbase等列式数据库，复杂查询结果存到mysql或者
 mongodb，session记录/经常访问的数据等热缓存到redis数据库。
 
->记录此大数据库主要是工作总结，不想浪费，仅作记录，提供数据工具代码示例，软件安装等请到网站 http://www.lenggirl.com 寻找。
+>记录此大数据库主要是工作总结，不想浪费，仅作记录，提供数据工具代码示例,
 有问题可联系本Github.
 
 >方便处理，我也实例了一个日志记录框架，请看下面。
@@ -253,10 +253,8 @@ SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是�
 
 5. 基本爬虫包
 
-Java不适合写爬虫，比较笨重，建议数据流用Java处理，如把爬到的数据打到KAFKA，让Java接力，Golang目前比较擅长高并发写爬虫，见https://www.github.com/hunterhug/GoSpider
+Java不适合写爬虫，比较笨重，建议数据流用Java处理，如把爬到的数据打到KAFKA，让Java接力，Golang/Python比较擅长高并发写爬虫.
 
 6. 网站开发
 
 Java并不适合快速网站开发，但是可以使用Spring，目前Spring Boot已经简化了开发，较简单，此不引入。MYSQL ORM不建议使用Hibernate或MyBatis,由于转换SQL语句相对耗时，且由于目前有其他数据库可替代，所以建议原生，带上连接池即可。
-
-安装软件见[http://www.lenggirl.com](http://www.lenggirl.com)
